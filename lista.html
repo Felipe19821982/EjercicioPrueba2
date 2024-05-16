@@ -47,51 +47,53 @@
         </ul>
       </nav>
 
-      <div id="datos">Criptomonedas</div>
 
-      <!--Scripts-->
-      <script src="assets/js/jquery.min.js"></script>
-      <script src="assets/js/jquery.scrollex.min.js"></script>
+      <div class="content-container">
+        <div id="datos">Criptomonedas</div>
 
-      <script>
-                const settings = {
-                    async: true,
-                    crossDomain: true,
-                    url: 'https://coinranking1.p.rapidapi.com/coins?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h&tiers%5B0%5D=1&orderBy=marketCap&orderDirection=desc&limit=50&offset=0',
-                    method: 'GET',
-                    headers: {
-                        'X-RapidAPI-Key': '64ece04b01msh85470598e5a401ep1aa9e0jsnbf616c56aa0d',
-                        'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
-                    }
-                };
+        <!--Scripts-->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.scrollex.min.js"></script>
 
-                $.ajax(settings).done(function (response) {
-                    console.log(response);
+        <script>
+                  const settings = {
+                      async: true,
+                      crossDomain: true,
+                      url: 'https://coinranking1.p.rapidapi.com/coins?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h&tiers%5B0%5D=1&orderBy=marketCap&orderDirection=desc&limit=50&offset=0',
+                      method: 'GET',
+                      headers: {
+                          'X-RapidAPI-Key': '64ece04b01msh85470598e5a401ep1aa9e0jsnbf616c56aa0d',
+                          'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
+                      }
+                  };
 
-                    const coins = response.data.coins;
+                  $.ajax(settings).done(function (response) {
+                      console.log(response);
 
-                    // Seleccionar el contenedor #datos
-                    const datosContainer = $("#datos");
+                      const coins = response.data.coins;
 
-                    // Iterar sobre las primeras 20 criptomonedas
-                    for (let i = 0; i < 20; i++) {
-                        const coin = coins[i];
-                        // Crear un nuevo elemento div para cada criptomoneda
-                        const coinElement = $("<div>");
-                        coinElement.html(`
-                            <p>Criptoactivo: ${coin.name}</p>
-                            <p>Símbolo: ${coin.symbol}</p>
-                            <p>Precio: ${coin.price}</p>
-                            <p>Capitalización de mercado: ${coin.marketCap}</p>
-                            <img src="${coin.iconUrl}" alt="${coin.name}" style="max-width: 20px; max-height: 20px;">
-                        `);
+                      // Seleccionar el contenedor #datos
+                      const datosContainer = $("#datos");
 
-                        // Agregar el nuevo elemento de la criptomoneda al contenedor #datos
-                        datosContainer.append(coinElement);
-                    }
-                });
+                      // Iterar sobre las primeras 20 criptomonedas
+                      for (let i = 0; i < 20; i++) {
+                          const coin = coins[i];
+                          // Crear un nuevo elemento div para cada criptomoneda
+                          const coinElement = $("<div>");
+                          coinElement.html(`
+                              <p>Criptoactivo: ${coin.name}</p>
+                              <p>Símbolo: ${coin.symbol}</p>
+                              <p>Precio: ${coin.price}</p>
+                              <p>Capitalización de mercado: ${coin.marketCap}</p>
+                              <img src="${coin.iconUrl}" alt="${coin.name}" style="max-width: 20px; max-height: 20px;">
+                          `);
 
-      </script>
+                          // Agregar el nuevo elemento de la criptomoneda al contenedor #datos
+                          datosContainer.append(coinElement);
+                      }
+                  });
 
+        </script>
+      </div>
 </body>
 </html>
