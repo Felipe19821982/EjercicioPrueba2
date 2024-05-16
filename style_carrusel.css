@@ -58,7 +58,7 @@ button {
 /******* Middle section CSS Start ******/
 /* -------- Landing page ------- */
 .game-section {
-  padding: 60px 50px;
+  padding: 60px 0px;
 }
 .game-section .owl-stage {
   margin: 15px 0;
