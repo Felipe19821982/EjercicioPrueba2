@@ -25,6 +25,39 @@ body::before {
   z-index: -1; /* Coloca el pseudo-elemento detrás del contenido del body */
   }
 
+  .container {
+    max-width: auto;
+    margin: 90px auto 0;
+    margin-top: 90px;
+    padding: 50px;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  h1 {
+    color: #fff;
+    font-size: 60px;
+    margin-left: 0;
+  }
+  p {
+      color: #fff;
+      font-size: 15px;
+      line-height: 1.5;
+      margin-left: 0;
+  }
+  .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
+  }
+  .btn:hover {
+      background-color: #0056b3;
+  }
+
 
 a {
   text-decoration: none;
@@ -169,21 +202,34 @@ input[type=checkbox] {
   .dropdown li:hover {
     background-color: rgb(0, 0, 0);
   }
-}
-    .card {
-      background-color: rgba(13, 2, 2, 0);
-      color:white;
+
+
+  }
+  .card {
+    max-width: 350px;
+    background-color: rgba(13, 2, 2, 0);
+    color:white;
+    margin: 10px;
   }
 
   .card-body {
       /* Ajusta el espaciado del texto según sea necesario */
-      padding: 20px;
+      padding: 10px;
   }
 
   .content-container {
     margin-top: 0px; /* Ajusta el valor según sea necesario para dar suficiente espacio después del navbar */
-    margin-bottom: 20px;
+    
   }
+
+  .container_con {
+    max-width: 1000px; /* Ajusta el ancho máximo del contenedor según sea necesario */
+    margin: 0px auto; /* Centra el contenedor horizontalmente */
+    padding: 40px;
+    display: flex; /* Utiliza flexbox para el diseño de los elementos internos */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan si no caben en una sola fila */
+}
 
 
 
