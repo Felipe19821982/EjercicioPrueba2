@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+    <nav class="navbar">
+        <!-- LOGO -->
+        <div class="logo"><img src="images/LogoBlanco.png" alt=""></div>
+    
+        <!-- NAVIGATION MENU -->
+        <ul class="nav-links">
+    
+          <!-- USING CHECKBOX HACK -->
+          <input type="checkbox" id="checkbox_toggle" />
+          <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+    
+          <!-- NAVIGATION MENUS -->
+          <div class="menu">
+    
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="criptoactivos.html">Criptoactivos</a></li>
+    
+            <li class="services">
+              <a href="servicios.html">Servicios</a>
+    
+              <!-- DROPDOWN MENU -->
+              <ul class="dropdown">
+                <li><a href="index.html">Inicio </a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="criptoactivos.html">Criptoactivos</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+              </ul>
+    
+            </li>
+    
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </div>
+        </ul>
+      </nav>
+
+      <br>
+
+      
+        <div class="container_card" id="datos"></div>
+      
+      
+        <div class="container_card" id="datos"></div>
+
+        <script>
+          const settings = {
+              async: true,
+              crossDomain: true,
+              url: 'https://coinranking1.p.rapidapi.com/coins?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h&tiers%5B0%5D=1&orderBy=marketCap&orderDirection=desc&limit=50&offset=0',
+              method: 'GET',
+              headers: {
+                  'X-RapidAPI-Key': '64ece04b01msh85470598e5a401ep1aa9e0jsnbf616c56aa0d',
+                  'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
+              }
+          };
+  
+          $.ajax(settings).done(function (response) {
+              const coins = response.data.coins;
+              const datosContainer = $("#datos");
+  
+              for (let i = 0; i < 20; i++) {
+                  const coin = coins[i];
+                  const card = $("<div class='card_b'>"); // Crear una nueva tarjeta
+                  card.html(`
+                      <img src="${coin.iconUrl}" alt="${coin.name}">
+                      <p>Criptoactivo: ${coin.name}</p>
+                      <p>Símbolo: ${coin.symbol}</p>
+                      <p>Precio: ${coin.price}</p>
+                      <p>Capitalización de mercado: ${coin.marketCap}</p>
+                  `);
+                  datosContainer.append(card);
+              }
+          });
+      </script>
+      
+</body>
+</html>

@@ -182,7 +182,7 @@ input[type=checkbox] {
 
   .content-container {
     margin-top: 0px; /* Ajusta el valor según sea necesario para dar suficiente espacio después del navbar */
-    margin-bottom: 100;
+    margin-bottom: 20px;
   }
 
 
@@ -304,6 +304,10 @@ input[type=checkbox] {
   border-color: #fff;
 }
 
+
+
+
+
 .card-with-bg {
   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)); /* Gradiente lineal con color transparente */
   border: 2px solid transparent;
@@ -315,7 +319,7 @@ input[type=checkbox] {
   object-fit: cover; 
 }
 .card {
-  margin-top: 150px;
+  margin-top: 100px;
   transition: border-color 0.3s ease;
   border-radius: 16px; 
 }
@@ -328,5 +332,41 @@ input[type=checkbox] {
   border-color: #e81cff;
 }
 
+
+
+
+
+.container_card {
+  display: flex;
+  flex-wrap: wrap; /* Permite que las tarjetas se ajusten automáticamente a la pantalla */
+  justify-content: center;
+  padding: 20px; /* Añade espacio entre las tarjetas y el borde de la ventana */
+  margin-top: 80px; 
+}
+.card_b {
+  flex: 1 1 250px;
+  max-width: 250px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease; /* Agrega una transición al color de fondo y al color del borde */
+  border: 1px solid #414141; /* Estilo inicial del borde */
+}
+
+.card_b:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-color: #e81cff; /* Cambia el color del borde al hacer hover */
+}
+.card_b img {
+  max-width: 100px; /* Define el ancho máximo de las imágenes dentro de las tarjetas */
+  max-height: 100px; /* Define la altura máxima de las imágenes dentro de las tarjetas */
+  margin-bottom: 10px; /* Añade espacio entre la imagen y el texto */
+}
+.card_b p {
+  color: #fff; /* Cambia el color del texto dentro de las tarjetas a negro */
+}
 
 
