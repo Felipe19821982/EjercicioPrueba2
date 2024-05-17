@@ -443,12 +443,25 @@ input[type=checkbox] {
   flex: 1;
 }
 .footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
   padding: 20px;
-  text-align: center;
 }
-.footer img {
-  width: 100px; /* Ajusta el tamaño según sea necesario */
+.footer-left {
+  display: flex;
+  align-items: center;
+}
+.footer-left img {
+  width: 50px; /* Ajusta el tamaño según sea necesario */
   height: auto;
+  margin-right: 10px; /* Espacio entre el logo y el texto */
+}
+.footer-right p {
+  margin: 0; /* Elimina el margen predeterminado del párrafo */
+  text-align: right; /* Alinea el texto a la derecha */
+  font-size: 13px;
+
 }
