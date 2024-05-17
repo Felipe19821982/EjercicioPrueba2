@@ -89,9 +89,9 @@
       <div id="redes-sociales-modal">
         <div id="redes-sociales-popup">
           <span>X</span>
-          <a href="https://www.instagram.com"><img src="images/instagram.png" alt="Instagram" style="width: 100px;"></a>
-          <a href="https://telegram.org"><img src="images/telegram.png" alt="Telegram" style="width: 100px;"></a>
-          <a href="https://x.com/home"><img src="images/x.webp" alt="X" style="width: 100px;"></a>
+          <a href="https://www.instagram.com" target="_blank"><img src="images/instagram.png" alt="Instagram" style="width: 100px;"></a>
+          <a href="https://telegram.org" target="_blank"><img src="images/telegram.png" alt="Telegram" style="width: 100px;"></a>
+          <a href="https://x.com/home" target="_blank"><img src="images/x.webp" alt="X" style="width: 100px;"></a>
         </div>
       </div>
       
@@ -103,15 +103,23 @@
 
 
       <script>
-           document.getElementById("mostrar-redes-sociales").addEventListener("click", function() {
-              document.getElementById("redes-sociales-modal").style.display = "flex";
-            });
-
-            document.getElementById("redes-sociales-popup").addEventListener("click", function(e) {
-              if (e.target.tagName === "SPAN") {
-                document.getElementById("redes-sociales-modal").style.display = "none";
-              }
-            });
+        document.getElementById("mostrar-redes-sociales").addEventListener("click", function() {
+          var redesSocialesModal = document.getElementById("redes-sociales-modal");
+          if (redesSocialesModal.style.display === "flex") {
+            redesSocialesModal.style.display = "none";
+            this.disabled = true; // Desactiva el botón
+          } else {
+            redesSocialesModal.style.display = "flex";
+            this.disabled = false; // Habilita el botón
+          }
+        });
+    
+        document.getElementById("redes-sociales-popup").addEventListener("click", function(e) {
+          if (e.target.tagName === "SPAN") {
+            document.getElementById("redes-sociales-modal").style.display = "none";
+            document.getElementById("mostrar-redes-sociales").disabled = false; // Habilita el botón al cerrar el modal
+          }
+        });
       </script>
       
 
