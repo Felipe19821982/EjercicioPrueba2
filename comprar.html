@@ -55,6 +55,7 @@
 
 
       <div class="form-container">
+        <h2>COMPRA DE CRIPTOACTIVOS</h2>
         <form class="form">
             <div class="form-group">
                 <label for="first-name">Nombre</label>
@@ -77,14 +78,18 @@
                 <img id="crypto-icon" src="" alt="" style="max-width: 50px; max-height: 50px;">
             </div>
             <div class="form-group">
-                <label for="amount">Monto</label>
-                <input type="number" id="amount" name="amount" required="">
+                <label for="local-currency-amount">Monto en moneda local</label>
+                <input type="number" id="local-currency-amount" name="local-currency-amount" required="">
+            </div>
+            <div class="form-group">
+                <label for="crypto-amount">Cantidad de criptomonedas</label>
+                <input type="number" id="crypto-amount" name="crypto-amount" readonly>
             </div>
             <button class="form-submit-btn" type="submit">Comprar</button>
         </form>
         <div id="purchase-message" style="display: none;"></div>
     </div>
-    <br>
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
@@ -113,6 +118,22 @@
                     selectCryptocurrency.append(option);
                 }
             });
+    
+            // Calcula la cantidad de criptomonedas basada en el monto ingresado y el valor de mercado
+            function calculateCryptoAmount() {
+                var selectedCrypto = $('#cryptocurrency').val();
+                var selectedCoin = coins.find(coin => coin.symbol === selectedCrypto);
+                var marketPrice = selectedCoin ? selectedCoin.price : 0;
+                var localCurrencyAmount = $('#local-currency-amount').val();
+                var cryptoAmount = localCurrencyAmount / marketPrice;
+                $('#crypto-amount').val(cryptoAmount.toFixed(8)); // Ajusta el número de decimales según sea necesario
+            }
+    
+            // Actualiza la cantidad de criptomonedas cuando se cambia el monto en moneda local
+            $('#local-currency-amount').on('input', calculateCryptoAmount);
+    
+            // Actualiza la cantidad de criptomonedas cuando se cambia la criptomoneda seleccionada
+            $('#cryptocurrency').change(calculateCryptoAmount);
     
             // Selecciona el formulario y agrega un evento submit
             $('form.form').submit(function (e) {
